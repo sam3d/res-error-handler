@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/sam3d/res-error-handler/issues"
   },
-  "homepage": "https://github.com/sam3d/res-error-handler#readme"
+  "homepage": "https://github.com/sam3d/res-error-handler#readme",
+  "devDependencies": {
+    "express": "^4.16.4"
+  }
 }
