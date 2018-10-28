@@ -17,7 +17,7 @@ function parseArgs(args, opts) {
 }
 
 function createHandler(req, res, opts) {
-	return function(status = opts.status) {
+	return function(defaultStatus = opts.status) {
 		return function(err) {
 			if (typeof err === "string" || err instanceof String) handleString();
 			else if (typeof err === "number") handleNumber();
@@ -25,19 +25,32 @@ function createHandler(req, res, opts) {
 			else handleObject();
 
 			function handleString() {
-				
+				res.status(defaultStatus).send(err);
 			}
 
 			function handleNumber() {
-
+				res.sendStatus(err);
 			}
 
 			function handleArray() {
+				let status = defaultStatus;
+				let body = null;
 
+				for (opt of err) {
+					if (typeof opt === "number") status = opt;
+					else if (typeof opt === "string" || opt instanceof String) body = opt;
+				}
+
+				if (body) res.status(status).send(body);
+				else res.sendStatus(status);
 			}
 
 			function handleObject() {
+				let body = err.body || err.message;
+				let status = err.status || err.code || defaultStatus;
 
+				if (body) res.status(status).send(body);
+				else res.sendStatus(status);
 			}
 		};
 	};

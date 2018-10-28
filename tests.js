@@ -7,9 +7,12 @@ const port = process.env.PORT || 3000;
 app.use(resErrorHandler());
 
 app.get("/", (req, res) => {
-	res.error();
+	startTests()
+		.catch(res.error());
 
-	res.send("Hello!");
+	async function startTests() {
+		throw "test";
+	}
 });
 
 app.listen(port, err => {
