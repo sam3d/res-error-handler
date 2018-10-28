@@ -3,6 +3,9 @@
   "version": "0.2.4",
   "description": "Easy async error handling in Express",
   "main": "index.js",
+  "scripts": {
+    "tests": "node tests.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sam3d/response-catcher.git"
