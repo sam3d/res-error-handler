@@ -1,11 +1,11 @@
 {
-  "name": "res-error-handler",
+  "name": "response-catcher",
   "version": "0.2.4",
   "description": "Easy async error handling in Express",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sam3d/res-error-handler.git"
+    "url": "git+https://github.com/sam3d/response-catcher.git"
   },
   "keywords": [
     "express",
@@ -19,9 +19,9 @@
   "author": "Sam Holmes",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sam3d/res-error-handler/issues"
+    "url": "https://github.com/sam3d/response-catcher/issues"
   },
-  "homepage": "https://github.com/sam3d/res-error-handler#readme",
+  "homepage": "https://github.com/sam3d/response-catcher#readme",
   "devDependencies": {
     "express": "^4.16.4"
   }

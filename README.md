@@ -1,12 +1,12 @@
-# res-error-handler
+# response-catcher
 _Easy async error handling in Express_
 
 ```console
-npm install --save res-error-handler
+npm install --save response-catcher
 ```
 
 ### Introduction
-`res-error-handler` is an extremely flexible `.catch()` error handler for promise-based express request flows.
+`response-catcher` is an extremely flexible `.catch()` error handler for promise-based express request flows.
 
 It should be used where you would have multiple `.then()` operations in a request and need to be able to throw and handle many kinds of errors.
 
@@ -18,8 +18,8 @@ By default it attaches itself to `res.error()` (though this can be configured).
 const express = require("express");
 const app = express();
 
-const resErrorHandler = require("res-error-handler");
-app.use(resErrorHandler());
+const responseCatcher = require("response-catcher");
+app.use(responseCatcher());
 
 app.get("/", (req, res) => {
 	findUser()
@@ -66,7 +66,7 @@ To use a custom logger that isn't `console.log`, supply it to the `logger` key. 
 You can supply as many arguments as you like. Any string you provide will interpreted as the `name`, any number you use will be interpreted as the `status`, and any object you use will have the named properties.
 
 ```javascript
-const resErrorHandler = require("res-error-handler");
+const resErrorHandler = require("response-catcher");
 
 app.use(resErrorHandler()); // Use the default values
 app.use(resErrorHandler(405)); // Change the default status to 405

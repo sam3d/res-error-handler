@@ -1,10 +1,10 @@
 const express = require("express");
-const resErrorHandler = require("./");
+const responseCatcher = require("./");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(resErrorHandler());
+app.use(responseCatcher());
 
 app.get("/", (req, res) => {
 	startTests()
