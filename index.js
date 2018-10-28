@@ -1,7 +1,8 @@
 const defaultOpts = {
 	name: "error", // The function name to bind to the response object
 	status: 400, // The global status code to return
-	logger: null // The logging function to use for errors
+	logger: console.log, // The logging function to use for errors
+	logging: false // Whether or not to log to the logger
 };
 
 function parseArgs(args, opts) {
@@ -20,7 +21,7 @@ function parseArgs(args, opts) {
 function createHandler(req, res, opts) {
 	return function(defaultStatus = opts.status) {
 		return function(err) {
-			if (opts.logger) opts.logger(err);
+			if (opts.logger && opts.logging) opts.logger(err);
 
 			if (typeof err === "string" || err instanceof String) handleString();
 			else if (typeof err === "number") handleNumber();

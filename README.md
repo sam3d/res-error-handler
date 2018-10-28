@@ -56,11 +56,12 @@ On instantiation of the middleware function, you can set the following propertie
 {
 	name: "error", // The name of the function to use: "res.error()"
 	status: 400, // The default response status to use
-	logger: null // The logging function to use for errors
+	logger: console.log, // The logging function to use for errors
+	logging: false // Whether or not to log errors
 }
 ```
 
-To enable logging, just pass `console.log` (not `console.log()`) as the value to the `logging` key, as it will use that.
+To use a custom logger that isn't `console.log`, supply it to the `logger` key. This still won't enable logging, which to do set `logging: true`.
 
 You can supply as many arguments as you like. Any string you provide will interpreted as the `name`, any number you use will be interpreted as the `status`, and any object you use will have the named properties.
 

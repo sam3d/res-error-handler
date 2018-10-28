@@ -1,6 +1,6 @@
 {
   "name": "res-error-handler",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Easy async error handling in Express",
   "main": "index.js",
   "repository": {
