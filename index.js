@@ -6,7 +6,7 @@ const defaultOpts = {
 function parseArgs(args, opts) {
 	if (!opts) opts = { ...defaultOpts };
 
-	for (arg of args) {
+	for (let arg of args) {
 		if (typeof arg === "string" || arg instanceof String) opts.name = arg;
 		else if (typeof arg === "number") opts.status = arg;
 		else if (arg instanceof Array) throw "You cannot use an array for options";
@@ -36,7 +36,7 @@ function createHandler(req, res, opts) {
 				let status = defaultStatus;
 				let body = null;
 
-				for (opt of err) {
+				for (let opt of err) {
 					if (typeof opt === "number") status = opt;
 					else if (typeof opt === "string" || opt instanceof String) body = opt;
 				}
