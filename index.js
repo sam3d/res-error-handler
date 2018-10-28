@@ -11,7 +11,7 @@ function parseArgs(args, opts) {
 	for (let arg of args) {
 		if (typeof arg === "string" || arg instanceof String) opts.name = arg;
 		else if (typeof arg === "number") opts.status = arg;
-		else if (arg instanceof Array) throw "You cannot use an array for options";
+		else if (arg instanceof Array) throw new TypeError("You cannot use an array for options");
 		else opts = { ...opts, ...arg };
 	}
 
