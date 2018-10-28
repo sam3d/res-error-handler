@@ -1,0 +1,25 @@
+{
+  "name": "res-error-handler",
+  "version": "0.1.0",
+  "description": "Easy async error handling in Express",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sam3d/res-error-handler.git"
+  },
+  "keywords": [
+    "express",
+    "async",
+    "promise",
+    "promises",
+    "error",
+    "handling",
+    "handler"
+  ],
+  "author": "Sam Holmes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sam3d/res-error-handler/issues"
+  },
+  "homepage": "https://github.com/sam3d/res-error-handler#readme"
+}
