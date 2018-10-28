@@ -1,7 +1,7 @@
 const defaultOpts = {
 	name: "error", // The function name to bind to the response object
 	status: 400, // The global status code to return
-	logger: null
+	logger: null // The logging function to use for errors
 };
 
 function parseArgs(args, opts) {
