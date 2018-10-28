@@ -1,6 +1,6 @@
 {
   "name": "response-catcher",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Easy async error handling in Express",
   "main": "index.js",
   "scripts": {
