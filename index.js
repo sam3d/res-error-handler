@@ -25,6 +25,7 @@ function createHandler(req, res, opts) {
 			if (typeof err === "string" || err instanceof String) handleString();
 			else if (typeof err === "number") handleNumber();
 			else if (err instanceof Array) handleArray();
+			else if (err instanceof Error) handleError();
 			else handleObject();
 
 			function handleString() {
@@ -33,6 +34,11 @@ function createHandler(req, res, opts) {
 
 			function handleNumber() {
 				res.sendStatus(err);
+			}
+
+			function handleError() {
+				res.sendStatus(500);
+				throw err; // This is an actual error that we didn't throw ourselves
 			}
 
 			function handleArray() {
