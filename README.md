@@ -66,12 +66,12 @@ To use a custom logger that isn't `console.log`, supply it to the `logger` key. 
 You can supply as many arguments as you like. Any string you provide will interpreted as the `name`, any number you use will be interpreted as the `status`, and any object you use will have the named properties.
 
 ```javascript
-const resErrorHandler = require("response-catcher");
+const responseCatcher = require("response-catcher");
 
-app.use(resErrorHandler()); // Use the default values
-app.use(resErrorHandler(405)); // Change the default status to 405
-app.use(resErrorHandler({ logger: console.log })); // Enable logging
-app.use(resErrorHandler("handleError", { status: 500 })); // Change both the default function name and the status
+app.use(responseCatcher()); // Use the default values
+app.use(responseCatcher(405)); // Change the default status to 405
+app.use(responseCatcher({ logger: console.log })); // Enable logging
+app.use(responseCatcher("handleError", { status: 500 })); // Change both the default function name and the status
 ```
 
 ### Creating the error
