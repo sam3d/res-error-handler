@@ -1,6 +1,10 @@
 # res-error-handler
 _Easy async error handling in Express_
 
+```console
+npm install --save res-error-handler
+```
+
 ### Introduction
 `res-error-handler` is an extremely flexible `.catch()` error handler for promise-based express request flows.
 
