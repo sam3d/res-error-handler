@@ -62,8 +62,8 @@ function createHandler(res, opts) {
 			}
 
 			function handleObject() {
-				let body = err.body || err.message;
-				let status = err.status || err.code || defaultStatus;
+				let body = err.body || err.message || err.b || err.m || err.r;
+				let status = err.status || err.code || err.s || err.c || defaultStatus;
 
 				if (body) res.status(status).send(body);
 				else res.sendStatus(status);
