@@ -5,20 +5,26 @@ const defaultOpts = {
 	logging: false // Whether or not to log to the logger
 };
 
-function parseArgs(args, opts) {
-	if (!opts) opts = { ...defaultOpts };
+function parseArgs(args) {
+	let opts = { ...defaultOpts }; // Prepare the options to be populated
 
 	for (let arg of args) {
 		if (typeof arg === "string" || arg instanceof String) opts.name = arg;
 		else if (typeof arg === "number") opts.status = arg;
+		else if (typeof arg === "boolean") opts.logging = arg;
+		else if (typeof arg === "function") opts.logger = arg;
 		else if (arg instanceof Array) throw new TypeError("You cannot use an array for options");
-		else opts = { ...opts, ...arg };
+		else opts = { ...opts, ...arg }; // Opts must be an object, so merge it with the default options
 	}
 
 	return opts;
 }
 
-function createHandler(req, res, opts) {
+/**
+ * Returns the function that is bound to the configured handler. It is responsible
+ * for implementing the function that decides how to handle errors.
+ */
+function createHandler(res, opts) {
 	return function(defaultStatus = opts.status) {
 		return function(err) {
 			if (opts.logger && opts.logging) opts.logger(err);
@@ -66,12 +72,26 @@ function createHandler(req, res, opts) {
 	};
 }
 
+/**
+ * Creates a new instance of the response catcher middleware and binds it to the
+ * specified method on the express `res` object.
+ *
+ * Multiple options can be supplied, either in the form of an options object
+ * that includes the listed options below, or as individual elements such as string
+ * for changing the `name` to bind, or as a number for changing the default `status`.
+ *
+ * Options:
+ * - `name` The function name to bind to the `res` object
+ * - `status` The default status code to return
+ * - `logger` The logging function to use for errors
+ * - `logging` Whether or not to enable logging
+ */
 module.exports = function(...args) {
 	opts = parseArgs(args);
 
 	return function(req, res, next) {
 		if (res[opts.name] !== undefined) throw new Error(`"res.${opts.name}" is already bound to another ${typeof res[opts.name]}`);
-		res[opts.name] = createHandler(req, res, opts); // Create and bind the handler
+		res[opts.name] = createHandler(res, opts); // Create and bind the handler
 		next();
 	};
 };
