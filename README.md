@@ -1,4 +1,4 @@
-# response-catcher
+# response-catcher ![npm](https://img.shields.io/npm/v/response-catcher.svg)
 _Easy async error handling in Express_
 
 ```console
